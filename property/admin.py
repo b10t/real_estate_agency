@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Flat
+from .models import Flat, Claim
 
 
 @admin.register(Flat)
@@ -15,3 +15,12 @@ class FlatAdmin(admin.ModelAdmin):
     list_filter = ['new_building']
     readonly_fields = ['created_at']
     search_fields = ('town', 'address', 'owner')
+
+
+@admin.register(Claim)
+class ClaimAdmin(admin.ModelAdmin):
+    list_display = ('user',
+                    'flat',
+                    'description'
+                    )
+    raw_id_fields = ('user', 'flat')
