@@ -10,7 +10,7 @@ def create_data_on_owner(app, schema_editor):
             owner=flat.owner,
             owners_phonenumber=flat.owners_phonenumber
         )
-        owner.property_apartments.set([flat])
+        owner.property_apartments.add(flat)
 
 
 class Migration(migrations.Migration):
