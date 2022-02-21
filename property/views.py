@@ -25,6 +25,8 @@ def show_flats(request):
     if max_price:
         flats = flats.filter(price__lt=max_price)
 
+    flats = flats.filter(new_building=new_building)
+
     towns = Flat.objects.values_list(
         'town', flat=True).distinct().order_by('town')
     return render(request, 'flats_list.html', {
