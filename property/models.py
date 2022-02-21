@@ -60,7 +60,7 @@ class Flat(models.Model):
 
 
 class Claim(models.Model):
-    user = models.ForeignKey(User,
+    client = models.ForeignKey(User,
                              on_delete=models.CASCADE,
                              verbose_name='Кто жаловался')
     flat = models.ForeignKey(Flat,

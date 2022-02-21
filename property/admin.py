@@ -26,11 +26,11 @@ class FlatAdmin(admin.ModelAdmin):
 
 @admin.register(Claim)
 class ClaimAdmin(admin.ModelAdmin):
-    list_display = ('user',
+    list_display = ('client',
                     'flat',
                     'description'
                     )
-    raw_id_fields = ('user', 'flat')
+    raw_id_fields = ('client', 'flat')
 
 
 @admin.register(Owner)
