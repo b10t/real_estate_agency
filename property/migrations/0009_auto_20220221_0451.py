@@ -5,16 +5,6 @@ from django.db import migrations
 from property.models import Flat
 
 
-def set_owner_pure_phone(app, schema_editor):
-    for flat in Flat.objects.all():
-        flat.owner_pure_phone = phonenumbers.format_number(
-            phonenumbers.parse(flat.owners_phonenumber, "RU"),
-            phonenumbers.PhoneNumberFormat.E164
-        )
-
-        flat.save()
-
-
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -22,5 +12,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(set_owner_pure_phone)
     ]
