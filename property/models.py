@@ -62,9 +62,11 @@ class Flat(models.Model):
 class Claim(models.Model):
     client = models.ForeignKey(User,
                              on_delete=models.CASCADE,
+                             related_name='client_claims',
                              verbose_name='Кто жаловался')
     flat = models.ForeignKey(Flat,
                              on_delete=models.CASCADE,
+                             related_name='flat_claims',
                              verbose_name='Квартира, на которую пожаловались')
     description = models.TextField('Текст жалобы')
 
@@ -77,7 +79,7 @@ class Owner(models.Model):
     owner_pure_phone = PhoneNumberField(blank=True,
                                         verbose_name='Нормализованный номер владельца')
     property_apartments = models.ManyToManyField(Flat,
-                                                 related_name='apartments',
+                                                 related_name='apartment_owners',
                                                  verbose_name='Квартиры в собственности')
 
     def __str__(self) -> str:
