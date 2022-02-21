@@ -7,7 +7,7 @@ from property.models import Flat
 
 def set_owner_pure_phone(app, schema_editor):
     for flat in Flat.objects.all():
-        phonenumber = phonenumbers.parse(flat.owners_phonenumber, "RU")
+        phonenumber = phonenumbers.parse(flat.owners_phonenumber, 'RU')
         if phonenumbers.is_valid_number(phonenumber):
             flat.owner_pure_phone = phonenumbers.format_number(
                 phonenumber,
