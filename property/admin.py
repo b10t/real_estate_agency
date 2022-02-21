@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Flat, Claim
+from .models import Flat, Claim, Owner
 
 
 @admin.register(Flat)
@@ -27,3 +27,12 @@ class ClaimAdmin(admin.ModelAdmin):
                     'description'
                     )
     raw_id_fields = ('user', 'flat')
+
+
+@admin.register(Owner)
+class OwnerAdmin(admin.ModelAdmin):
+    list_display = ('owner',
+                    'owners_phonenumber',
+                    'owner_pure_phone',
+                    )
+    raw_id_fields = ['property_apartments']
